@@ -1,14 +1,20 @@
-import { Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import Homepage from './pages/Homepage';
 
 function App() {
-  return (
-    <Routes>
+  const router = createBrowserRouter(
+    createRoutesFromElements(
       <Route element={<Layout />}>
         <Route index path="/" element={<Homepage />} />
       </Route>
-    </Routes>
+    )
+  )
+
+  return (
+    <div className='app'>
+      <RouterProvider router={router} />
+    </div>
   );
 }
 
